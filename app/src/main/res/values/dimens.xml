@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottomMarginLeft">56dp</dimen>
+    <dimen name="buyTop">8dp</dimen>
+    <dimen name="picWidth">100dp</dimen>
+    <dimen name="ingredients_size">12sp</dimen>
+</resources>

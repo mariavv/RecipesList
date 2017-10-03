@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RecipesList</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Breakfasts">Завтраки</string>
+    <string name="Dinners">Обеды</string>
+    <string name="Breakfast">Завтрак</string>
+    <string name="Dinner">Ужин</string>
+</resources>
