@@ -14,28 +14,23 @@ public class Breakfasts extends Fragment {
 
     private static final String ARG_PAGE_BREAKFASTS = "page_breakfasts";
 
-    RecyclerView recycler;
-    RecipesAdapter adapter;
+    private RecyclerView recycler;
+    private RecipesAdapter adapter;
 
     public static Breakfasts newInstance(int page) {
         Breakfasts fragment = new Breakfasts();
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE_BREAKFASTS, page);
-        fragment.setArguments(args);
+        //args.putInt(ARG_PAGE_BREAKFASTS, page);
+        //fragment.setArguments(args);
         return fragment;
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.breakfasts_fragment, container, false);
-        recycler = (RecyclerView) v.findViewById(R.id.recycler);
+        recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
         return v;
     }

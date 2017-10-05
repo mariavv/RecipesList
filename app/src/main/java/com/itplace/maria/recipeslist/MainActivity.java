@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 public class RecipesList_main extends FragmentActivity {
 
-    static final int PAGE_COUNT = 2;
+    private static final int PAGE_COUNT = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
