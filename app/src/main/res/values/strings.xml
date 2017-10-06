@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipesList</string>
+    <string name="app_name">Список рецептов</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -7,4 +7,6 @@
     <string name="Dinners">Обеды</string>
     <string name="Breakfast">Завтрак</string>
     <string name="Dinner">Ужин</string>
+    <string name="ingredients">Ингредиенты:</string>
+    <string name="name">Название</string>
 </resources>

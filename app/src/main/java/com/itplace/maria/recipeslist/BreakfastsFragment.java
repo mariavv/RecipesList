@@ -8,28 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import static com.itplace.maria.recipeslist.RecipeType.*;
 import static com.itplace.maria.recipeslist.RecipeType.Breakfast;
 
-public class Breakfasts extends Fragment {
+public class BreakfastsFragment extends Fragment {
 
-    private static final String ARG_PAGE_BREAKFASTS = "page_breakfasts";
+    private static final String ARG_TYPE_PAGE = "type_page";
 
     private RecyclerView recycler;
     private RecipesAdapter adapter;
 
-    public static Breakfasts newInstance(int page) {
-        Breakfasts fragment = new Breakfasts();
+    public static BreakfastsFragment newInstance(RecipeType type) {
+        BreakfastsFragment fragment = new BreakfastsFragment();
         Bundle args = new Bundle();
-        //args.putInt(ARG_PAGE_BREAKFASTS, page);
-        //fragment.setArguments(args);
+        args.putSerializable("ARG_TYPE_PAGE", type);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.breakfasts_fragment, container, false);
+        View v = inflater.inflate(R.layout.breakfasts_fragment, container, false);
         recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
         return v;
@@ -40,9 +40,21 @@ public class Breakfasts extends Fragment {
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter.addItem(new Recipe(Breakfast, "Кофе", "кофе, печенька", R.drawable.pic ));
-        adapter.addItem(new Recipe(Breakfast, "Омлет", "яйца, молоко, соль", R.drawable.omlet ));
-        adapter.addItem(new Recipe(Breakfast, "Салат с крабовыми палочками",
-                "крабовые палочки, капуста, огурцы, майонез, соль", R.drawable.salat_krab ));
+        Bundle args = getArguments();
+        if (args != null) {
+            RecipeType type = (RecipeType) args.getSerializable("ARG_TYPE_PAGE");
+            switch (type) {
+                case Breakfast:
+                    adapter.addItem(new Recipe(Breakfast, "Кофе", "кофе, печенька", R.drawable.pic));
+                    adapter.addItem(new Recipe(Breakfast, "Омлет", "яйца, молоко, соль", R.drawable.omlet));
+                    adapter.addItem(new Recipe(Breakfast, "Салат с крабовыми палочками",
+                            "крабовые палочки, капуста, огурцы, майонез, соль", R.drawable.salat_krab));
+                    break;
+
+                case Dinner:
+                    adapter.addItem(new Recipe(Dinner, "Вкусный ужин", "продукты", R.drawable.pic));
+                    break;
+            }
+        }
     }
 }
