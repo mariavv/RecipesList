@@ -1,10 +1,11 @@
 package com.itplace.maria.recipeslist;
 
-import android.support.v4.app.FragmentActivity;
+
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,29 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ViewPager viewPager = findViewById(R.id.viewPager);
-        PagerAdapter pagerAdapter = new RecipesFragmentPagerAdapter(getSupportFragmentManager(), getBaseContext());
+        PagerAdapter pagerAdapter = new RecipesFragmentPagerAdapter(getSupportFragmentManager(), MainActivity.this);
         viewPager.setAdapter(pagerAdapter);
-
-        /*viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                if (position == 0) {
-                    //updateT((TextView) findViewById(R.id.text));
-                }
-                if (position == 1) {
-                    //updateD((TextView) findViewById(R.id.text));
-                }
-            }
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset,
-                                       int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });**/
     }
 }

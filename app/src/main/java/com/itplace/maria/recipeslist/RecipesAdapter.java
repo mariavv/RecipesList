@@ -1,7 +1,6 @@
 package com.itplace.maria.recipeslist;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,35 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.v7.app.AppCompatActivity;
-
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
-
 
 /**
- * Created by maria on 02.10.2017
+ * Created by maria on 02.10.2017.
+ * RecyclerView.Adapter
  */
 
-public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
-
-    public static final int REQUEST_CODE_HEX = 0;
+class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 
     private List<Recipe> items;
 
-    private static Context parentContext;
-
     @Override
     public RecipesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        parentContext = parent.getContext();
-        View v = LayoutInflater.from(parentContext)
-                .inflate(R.layout.recipe_card, parent, false);
-
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_card, parent, false);
         return new ViewHolder(v);
     }
 
@@ -51,31 +39,22 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         return items.size();
     }
 
-    public void addItem(Recipe entity) {
+    void addItem(Recipe entity) {
         if (items == null) {
             items = new ArrayList<>();
         }
         items.add(entity);
-        notifyDataSetChanged();
+        notifyItemInserted(items.indexOf(entity));
     }
 
-    public void updateItems(List<Recipe> items) {
-        if (items == null) {
-            return;
-        }
-        this.items = items;
-        notifyDataSetChanged();
-    }
-
-
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView ingredients;
         ImageView pic;
         CardView card;
 
-        public ViewHolder(final View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
@@ -86,10 +65,10 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             card.setOnClickListener(this);
         }
 
-        public void bindData(final Recipe entity) {
+        void bindData(final Recipe entity) {
             name.setText(entity.getName());
-            ingredients.setText(parentContext.getResources().getString(R.string.ingredients)
-                    + " " + entity.getIngredients());
+            ingredients.setText(itemView.getContext().getResources().getString(R.string.ingredients)
+                                   + " " + entity.getIngredients());
             pic.setImageResource(entity.getPicture());
         }
 
@@ -97,17 +76,20 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                switch (itemView.getId()) {
-                    case R.id.card:
+                // TODO <?>
+                //switch (itemView.getId()) {
+                //    case R.id.card:
                         itemClick(position);
-                        break;
-                }
+                //        break;
+                //}
             }
         }
 
         private void itemClick(int position) {
-            Intent intent = CardActivity.createStartIntent(parentContext);
-            parentContext.startActivity(intent);
+            // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment. Передавать можно или сам элемент или id в Recipe
+            // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
+            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
+            //itemView.getContext().startActivity(intent);
         }
     }
 }
