@@ -19,6 +19,8 @@ class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
 
+    public RecipesFragmentPagerAdapterCallBack callBack;
+
     RecipesFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
