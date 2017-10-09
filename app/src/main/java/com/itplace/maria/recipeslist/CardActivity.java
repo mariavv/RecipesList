@@ -19,8 +19,8 @@ public class CardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_card);
     }
 
-    /*public static Intent createStartIntent(Context context) {
+    public static Intent createStartIntent(Context context) {
         Intent intent = new Intent(context, CardActivity.class);
         return intent;
-    }*/
+    }
 }

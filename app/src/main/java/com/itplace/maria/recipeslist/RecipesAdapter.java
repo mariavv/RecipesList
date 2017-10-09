@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,7 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
         void bindData(final Recipe entity) {
             name.setText(entity.getName());
             ingredients.setText(itemView.getContext().getResources().getString(R.string.ingredients)
-                                   + " " + entity.getIngredients());
+                    + " " + entity.getIngredients());
             pic.setImageResource(entity.getPicture());
         }
 
@@ -76,20 +77,15 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                // TODO <?>
-                //switch (itemView.getId()) {
-                //    case R.id.card:
-                        itemClick(position);
-                //        break;
-                //}
+                itemClick(position);
             }
         }
 
         private void itemClick(int position) {
             // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment. Передавать можно или сам элемент или id в Recipe
             // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
-            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
-            //itemView.getContext().startActivity(intent);
+            Intent intent = CardActivity.createStartIntent(itemView.getContext());
+            itemView.getContext().startActivity(intent);
         }
     }
 }
