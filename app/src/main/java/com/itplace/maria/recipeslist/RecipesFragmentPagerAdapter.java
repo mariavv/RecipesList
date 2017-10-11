@@ -61,7 +61,16 @@ class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
         return pageTitle;
     }
 
+    void registerCallBack(RecipesFragmentPagerAdapterCallBack call_back){
+        this.callBack = call_back;
+    }
+
+    void pfff(){
+        // вызываем метод обратного вызова
+        callBack.onItemClick(/*int position*/);
+    }
+
     interface RecipesFragmentPagerAdapterCallBack {
-        void onItemClick(int position);
+        void onItemClick(/*int position*/);
     }
 }

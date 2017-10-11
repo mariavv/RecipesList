@@ -21,6 +21,8 @@ public class RecipesListFragment extends Fragment implements RecipesFragmentPage
 
     private RecyclerView recycler;
 
+    private RecipesFragmentPagerAdapter recipesFragmentPagerAdapter;
+
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
         Bundle args = new Bundle();
@@ -35,6 +37,9 @@ public class RecipesListFragment extends Fragment implements RecipesFragmentPage
         View v = inflater.inflate(R.layout.fragment_recipes_list, container, false);
         recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
+
+        recipesFragmentPagerAdapter = new RecipesFragmentPagerAdapter();
+
         return v;
     }
 
@@ -68,7 +73,7 @@ public class RecipesListFragment extends Fragment implements RecipesFragmentPage
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(/*int position*/) {
         // TODO
         // Тут не стартует!
         Intent intent = CardActivity.createStartIntent(getContext());

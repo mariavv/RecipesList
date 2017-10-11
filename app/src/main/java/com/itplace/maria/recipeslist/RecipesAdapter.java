@@ -47,10 +47,6 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
         notifyItemInserted(items.indexOf(entity));
     }
 
-    public interface RecipesAdapterCallBack {
-        void ItemClick(int position);
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
