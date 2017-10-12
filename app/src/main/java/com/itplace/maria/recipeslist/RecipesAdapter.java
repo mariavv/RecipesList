@@ -1,7 +1,6 @@
 package com.itplace.maria.recipeslist;
 
 
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.itplace.maria.recipeslist.RecipeDataStruct.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,11 @@ import java.util.List;
  * RecyclerView.Adapter
  */
 
-class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
+public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 
     private List<Recipe> items;
 
-    public OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     @Override
     public RecipesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,7 +42,7 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
         return items.size();
     }
 
-    void addItem(Recipe entity) {
+    public void addItem(Recipe entity) {
         if (items == null) {
             items = new ArrayList<>();
         }
@@ -95,7 +96,7 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
         this.onItemClickListener = onItemClickListener;
     }
 
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(int RecipeId);
     }
 }

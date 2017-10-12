@@ -1,9 +1,11 @@
-package com.itplace.maria.recipeslist;
+package com.itplace.maria.recipeslist.UI;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.itplace.maria.recipeslist.R;
 
 /**
  * Карточка элемента RecyclerView.
@@ -20,7 +22,6 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public static Intent createStartIntent(Context context) {
-        Intent intent = new Intent(context, CardActivity.class);
-        return intent;
+        return new Intent(context, CardActivity.class);
     }
 }

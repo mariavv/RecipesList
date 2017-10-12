@@ -1,10 +1,13 @@
-package com.itplace.maria.recipeslist;
+package com.itplace.maria.recipeslist.UI;
 
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.itplace.maria.recipeslist.R;
+import com.itplace.maria.recipeslist.RecipesFragmentPagerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {

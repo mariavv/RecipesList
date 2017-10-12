@@ -1,11 +1,11 @@
-package com.itplace.maria.recipeslist;
+package com.itplace.maria.recipeslist.RecipeDataStruct;
 
 /**
  * Created by maria on 02.10.2017.
  * Тип рецепта для дифференцирования по табам
  */
 
-enum RecipeType {
+public enum RecipeType {
     BREAKFAST,
     DINNER
 }

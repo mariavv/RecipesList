@@ -5,13 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType;
+import com.itplace.maria.recipeslist.UI.RecipesListFragment;
+
 
 /**
  * Created by maria on 04.10.2017.
  * PagerAdapter
  */
 
-class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
+public class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private static final int PAGE_COUNT = 2;
     private static final int PAGE_BREAKFASTS = 0;
@@ -21,7 +24,7 @@ class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
 
     //public RecipesFragmentPagerAdapterCallBack callBack;
 
-    RecipesFragmentPagerAdapter(FragmentManager fm, Context context) {
+    public RecipesFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }

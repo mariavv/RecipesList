@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist;
+package com.itplace.maria.recipeslist.UI;
 
 
 import android.content.Intent;
@@ -10,7 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static com.itplace.maria.recipeslist.RecipeType.*;
+import com.itplace.maria.recipeslist.R;
+import com.itplace.maria.recipeslist.RecipeDataStruct.Recipe;
+import com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType;
+import com.itplace.maria.recipeslist.RecipesAdapter;
+
+import static com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType.*;
 
 /**
  * Для отображения списка элементов - рецептов
