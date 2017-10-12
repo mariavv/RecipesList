@@ -1,12 +1,13 @@
-package com.itplace.maria.recipeslist;
+package com.itplace.maria.recipeslist.view;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType;
-import com.itplace.maria.recipeslist.UI.RecipesListFragment;
+import com.itplace.maria.recipeslist.R;
+import com.itplace.maria.recipeslist.recipedatastruct.RecipeType;
+import com.itplace.maria.recipeslist.ui.RecipesListFragment;
 
 
 /**

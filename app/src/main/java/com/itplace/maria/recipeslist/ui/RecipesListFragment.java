@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist.UI;
+package com.itplace.maria.recipeslist.ui;
 
 
 import android.content.Intent;
@@ -11,24 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.itplace.maria.recipeslist.R;
-import com.itplace.maria.recipeslist.RecipeDataStruct.Recipe;
-import com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType;
-import com.itplace.maria.recipeslist.RecipesAdapter;
+import com.itplace.maria.recipeslist.recipedatastruct.Recipe;
+import com.itplace.maria.recipeslist.recipedatastruct.RecipeType;
+import com.itplace.maria.recipeslist.view.RecipesAdapter;
 
-import static com.itplace.maria.recipeslist.RecipeDataStruct.RecipeType.*;
+import static com.itplace.maria.recipeslist.recipedatastruct.RecipeType.*;
 
 /**
  * Для отображения списка элементов - рецептов
  */
 public class RecipesListFragment extends Fragment /*implements RecipesFragmentPagerAdapter.RecipesFragmentPagerAdapterCallBack*/
-                                                     implements RecipesAdapter.OnItemClickListener {
+                                                     implements RecipesAdapter.ViewHolder.OnItemClickListener {
 
     private static final String ARG_TYPE_PAGE = "type_page";
 
     private RecyclerView recycler;
 
     //private RecipesFragmentPagerAdapter recipesFragmentPagerAdapter;
-    private RecipesAdapter recipesAdapter;
+    private RecipesAdapter.ViewHolder recipesAdapter;
 
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
@@ -46,7 +46,7 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
         configureRecyclerView();
 
         //recipesFragmentPagerAdapter = new RecipesFragmentPagerAdapter();
-        recipesAdapter = new RecipesAdapter();
+        recipesAdapter = new RecipesAdapter.ViewHolder(v);
         recipesAdapter.setOnItemClickListener(this);
 
         return v;

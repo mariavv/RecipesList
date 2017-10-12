@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist.UI;
+package com.itplace.maria.recipeslist.ui;
 
 import android.content.Context;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist.RecipeDataStruct;
+package com.itplace.maria.recipeslist.recipedatastruct;
 
 /**
  * Created by maria on 02.10.2017.
