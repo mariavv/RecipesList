@@ -41,6 +41,7 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
         configureRecyclerView();
 
         //recipesFragmentPagerAdapter = new RecipesFragmentPagerAdapter();
+        recipesAdapter = new RecipesAdapter();
         recipesAdapter.setOnItemClickListener(this);
 
         return v;
