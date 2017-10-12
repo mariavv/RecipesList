@@ -23,6 +23,8 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 
     private List<Recipe> items;
 
+    public OnItemClickListener onItemClickListener;
+
     @Override
     public RecipesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_card, parent, false);
@@ -84,8 +86,16 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
             // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment.
             // TODO Передавать можно или сам элемент или id в Recipe
             // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
-            Intent intent = CardActivity.createStartIntent(itemView.getContext());
-            itemView.getContext().startActivity(intent);
+            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
+            //itemView.getContext().startActivity(intent);
         }
+    }
+
+    public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    interface OnItemClickListener {
+        void onItemClick(int RecipeId);
     }
 }

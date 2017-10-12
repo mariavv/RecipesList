@@ -15,13 +15,15 @@ import static com.itplace.maria.recipeslist.RecipeType.*;
 /**
  * Для отображения списка элементов - рецептов
  */
-public class RecipesListFragment extends Fragment /*implements RecipesFragmentPagerAdapter.RecipesFragmentPagerAdapterCallBack*/ {
+public class RecipesListFragment extends Fragment /*implements RecipesFragmentPagerAdapter.RecipesFragmentPagerAdapterCallBack*/
+                                                     implements RecipesAdapter.OnItemClickListener {
 
     private static final String ARG_TYPE_PAGE = "type_page";
 
     private RecyclerView recycler;
 
     //private RecipesFragmentPagerAdapter recipesFragmentPagerAdapter;
+    private RecipesAdapter recipesAdapter;
 
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
@@ -39,6 +41,7 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
         configureRecyclerView();
 
         //recipesFragmentPagerAdapter = new RecipesFragmentPagerAdapter();
+        recipesAdapter.setOnItemClickListener(this);
 
         return v;
     }
@@ -70,6 +73,12 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
                 }
             }
         }
+    }
+
+    @Override
+    public void onItemClick(int RecipeId) {
+        Intent intent = CardActivity.createStartIntent(getContext());
+        startActivity(intent);
     }
 
     /*@Override
