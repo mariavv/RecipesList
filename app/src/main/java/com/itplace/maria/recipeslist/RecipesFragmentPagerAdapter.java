@@ -19,7 +19,7 @@ class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
 
-    public RecipesFragmentPagerAdapterCallBack callBack;
+    //public RecipesFragmentPagerAdapterCallBack callBack;
 
     RecipesFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -61,16 +61,16 @@ class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
         return pageTitle;
     }
 
-    void registerCallBack(RecipesFragmentPagerAdapterCallBack call_back){
+    /*void registerCallBack(RecipesFragmentPagerAdapterCallBack call_back){
         this.callBack = call_back;
     }
 
     void pfff(){
         // вызываем метод обратного вызова
-        callBack.onItemClick(/*int position*/);
+        callBack.onItemClick(int position);
     }
 
     interface RecipesFragmentPagerAdapterCallBack {
-        void onItemClick(/*int position*/);
-    }
+        void onItemClick(int position);
+    }*/
 }

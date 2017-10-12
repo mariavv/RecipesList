@@ -84,8 +84,8 @@ class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
             // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment.
             // TODO Передавать можно или сам элемент или id в Recipe
             // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
-            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
-            //itemView.getContext().startActivity(intent);
+            Intent intent = CardActivity.createStartIntent(itemView.getContext());
+            itemView.getContext().startActivity(intent);
         }
     }
 }
