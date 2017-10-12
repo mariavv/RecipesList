@@ -11,24 +11,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.itplace.maria.recipeslist.R;
+import com.itplace.maria.recipeslist.presenter.RecipesPresenter;
 import com.itplace.maria.recipeslist.recipedatastruct.Recipe;
 import com.itplace.maria.recipeslist.recipedatastruct.RecipeType;
-import com.itplace.maria.recipeslist.view.RecipesAdapter;
+import com.itplace.maria.recipeslist.adapters.RecipesAdapter;
+import com.itplace.maria.recipeslist.view.RecipesView;
 
-import static com.itplace.maria.recipeslist.recipedatastruct.RecipeType.*;
+import java.util.List;
 
 /**
- * Для отображения списка элементов - рецептов
+ * Здесь отображается список элементов - рецептов
  */
-public class RecipesListFragment extends Fragment /*implements RecipesFragmentPagerAdapter.RecipesFragmentPagerAdapterCallBack*/
-                                                     implements RecipesAdapter.ViewHolder.OnItemClickListener {
+public class RecipesListFragment extends Fragment
+                           implements RecipesAdapter.ViewHolder.OnItemClickListener, RecipesView {
 
     private static final String ARG_TYPE_PAGE = "type_page";
 
     private RecyclerView recycler;
 
-    //private RecipesFragmentPagerAdapter recipesFragmentPagerAdapter;
-    private RecipesAdapter.ViewHolder recipesAdapter;
+    RecipesAdapter adapter;
+
+    private final RecipesPresenter presenter = new RecipesPresenter();
 
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
@@ -45,40 +48,19 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
         recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
 
-        //recipesFragmentPagerAdapter = new RecipesFragmentPagerAdapter();
-        recipesAdapter = new RecipesAdapter.ViewHolder(v);
+        RecipesAdapter.ViewHolder recipesAdapter = new RecipesAdapter.ViewHolder(v);
         recipesAdapter.setOnItemClickListener(this);
+
+        presenter.attachView(this);
+        presenter.loadRecipes();
 
         return v;
     }
 
     private void configureRecyclerView() {
-        RecipesAdapter adapter = new RecipesAdapter();
+        adapter = new RecipesAdapter();
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        Bundle args = getArguments();
-        if (args != null) {
-            RecipeType type = (RecipeType) args.getSerializable(ARG_TYPE_PAGE);
-            if (type != null) {
-                /*
-                 * TODO Набросать рецептов.
-                 */
-                switch (type) {
-                    case BREAKFAST:
-                        adapter.addItem(new Recipe("1", BREAKFAST, "Кофе", "кофе, печенька", R.drawable.pic));
-                        adapter.addItem(new Recipe("2", BREAKFAST, "Омлет", "яйца, молоко, соль", R.drawable.omlet));
-                        adapter.addItem(new Recipe("3", BREAKFAST, "Салат с крабовыми палочками",
-                                "крабовые палочки, капуста белокочанная, огурцы, кукуруза, сыр, майонез, соль",
-                                R.drawable.salat_krab));
-                        break;
-
-                    case DINNER:
-                        adapter.addItem(new Recipe("4", DINNER, "Вкусный ужин", "продукты", R.drawable.pic));
-                        break;
-                }
-            }
-        }
     }
 
     @Override
@@ -87,11 +69,27 @@ public class RecipesListFragment extends Fragment /*implements RecipesFragmentPa
         startActivity(intent);
     }
 
-    /*@Override
-    public void onItemClick(int position) {
-        // TODO
-        // Тут не стартует!
-        Intent intent = CardActivity.createStartIntent(getContext());
-        startActivity(intent);
-    }*/
+    @Override
+    public void onRecipesReceived(List<Recipe> recipes) {
+        Bundle args = getArguments();
+        if (args != null) {
+            RecipeType type = (RecipeType) args.getSerializable(ARG_TYPE_PAGE);
+            if (type != null) {
+
+                for (int i = 0; i < recipes.size(); i++) {
+                    Recipe recipe = recipes.get(i);
+
+                    if (recipe.getType() == type) {
+                        adapter.addItem(recipe);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.detachView();
+        super.onDestroyView();
+    }
 }

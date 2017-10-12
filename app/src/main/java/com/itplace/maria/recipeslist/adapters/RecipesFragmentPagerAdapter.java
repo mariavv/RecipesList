@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist.view;
+package com.itplace.maria.recipeslist.adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -22,8 +22,6 @@ public class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
     private static final int PAGE_DINNERS = 1;
 
     private Context context;
-
-    //public RecipesFragmentPagerAdapterCallBack callBack;
 
     public RecipesFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -64,17 +62,4 @@ public class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
         }
         return pageTitle;
     }
-
-    /*void registerCallBack(RecipesFragmentPagerAdapterCallBack call_back){
-        this.callBack = call_back;
-    }
-
-    void pfff(){
-        // вызываем метод обратного вызова
-        callBack.onItemClick(int position);
-    }
-
-    interface RecipesFragmentPagerAdapterCallBack {
-        void onItemClick(int position);
-    }*/
 }

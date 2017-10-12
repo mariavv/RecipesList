@@ -1,4 +1,4 @@
-package com.itplace.maria.recipeslist.view;
+package com.itplace.maria.recipeslist.adapters;
 
 
 import android.support.v7.widget.CardView;
@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * Created by maria on 02.10.2017.
- * RecyclerView.Adapter
+ * Адаптер RecyclerView`ра
  */
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {

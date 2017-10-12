@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.itplace.maria.recipeslist.R;
-import com.itplace.maria.recipeslist.view.RecipesFragmentPagerAdapter;
+import com.itplace.maria.recipeslist.adapters.RecipesFragmentPagerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -23,6 +23,10 @@ public class Recipe {
 
     public String getId() { return  id; }
 
+    public RecipeType getType() {
+        return type;
+    }
+
     public String getName() {
         return name;
     }
