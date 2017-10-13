@@ -64,16 +64,14 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             name = itemView.findViewById(R.id.name);
             ingredients = itemView.findViewById(R.id.ingredients);
             pic = itemView.findViewById(R.id.pic);
-            card = itemView.findViewById(R.id.card);
 
-            // TODO null exception
-            //card.setOnClickListener(this);
+            // TODO null pointer exception
+            itemView.setOnClickListener(this);
         }
 
         void bindData(final Recipe entity) {
             name.setText(entity.getName());
-            ingredients.setText(itemView.getContext().getResources().getString(R.string.ingredients)
-                    + " " + entity.getIngredients());
+            ingredients.setText(itemView.getContext().getResources().getString(R.string.ingredients) + " " + entity.getIngredients());
             pic.setImageResource(entity.getPicture());
         }
 
