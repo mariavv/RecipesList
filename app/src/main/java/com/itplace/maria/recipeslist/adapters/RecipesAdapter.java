@@ -54,7 +54,6 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         TextView name;
         TextView ingredients;
         ImageView pic;
-        CardView card;
 
         private OnItemClickListener onItemClickListener;
 
@@ -64,8 +63,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             name = itemView.findViewById(R.id.name);
             ingredients = itemView.findViewById(R.id.ingredients);
             pic = itemView.findViewById(R.id.pic);
-
-            // TODO null pointer exception
+            
             itemView.setOnClickListener(this);
         }
 
