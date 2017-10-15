@@ -1,7 +1,6 @@
 package com.itplace.maria.recipeslist.adapters;
 
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +44,9 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         if (items == null) {
             items = new ArrayList<>();
         }
+        notifyItemInserted(items.size());
         items.add(entity);
-        notifyItemInserted(items.indexOf(entity));
+        //notifyItemInserted(items.indexOf(entity));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -63,7 +63,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             name = itemView.findViewById(R.id.name);
             ingredients = itemView.findViewById(R.id.ingredients);
             pic = itemView.findViewById(R.id.pic);
-            
+
             itemView.setOnClickListener(this);
         }
 
@@ -77,17 +77,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                //itemClick(position);
                 onItemClickListener.onItemClick(position);
             }
-        }
-
-        private void itemClick(int position) {
-            // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment.
-            // TODO Передавать можно или сам элемент или id в Recipe
-            // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
-            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
-            //itemView.getContext().startActivity(intent);
         }
 
         public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
