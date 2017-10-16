@@ -20,8 +20,6 @@ public class RecipesPresenter {
     }
 
     public void loadRecipes() {
-<<<<<<< Updated upstream
-=======
         /*recipesRepository.getRecipes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -42,7 +40,6 @@ public class RecipesPresenter {
                 });*/
         //List<Recipe> recipes = recipesRepository.getRecipes();
 
->>>>>>> Stashed changes
         List<Recipe> recipes = recipesRepository.getRecipes();
         if (view != null) {
             view.onRecipesReceived(recipes);

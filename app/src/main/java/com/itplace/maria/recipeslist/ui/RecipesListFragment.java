@@ -48,8 +48,7 @@ public class RecipesListFragment extends Fragment
         recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
 
-        RecipesAdapter listener = new RecipesAdapter();
-        listener.setOnItemClickListener(this);
+        adapter.setOnItemClickListener(this);
 
         presenter.attachView(this);
         presenter.loadRecipes();

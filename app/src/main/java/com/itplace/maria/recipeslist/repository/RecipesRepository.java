@@ -16,8 +16,6 @@ import static com.itplace.maria.recipeslist.recipedatastruct.RecipeType.DINNER;
  */
 
 public class RecipesRepository {
-<<<<<<< Updated upstream
-=======
     /*public Observable<List<Recipe>> getRecipes() {
         return Observable.defer(new Callable<ObservableSource<? extends List<Recipe>>>() {
                                     @Override
@@ -38,7 +36,6 @@ public class RecipesRepository {
     });
     }*/
 
->>>>>>> Stashed changes
     public List<Recipe> getRecipes() {
         List<Recipe> recipes = new ArrayList<>();
 
