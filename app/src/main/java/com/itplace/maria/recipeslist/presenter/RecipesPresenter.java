@@ -1,17 +1,15 @@
 package com.itplace.maria.recipeslist.presenter;
 
-import android.widget.Toast;
 
+import com.itplace.maria.recipeslist.adapters.RecipesAdapter;
 import com.itplace.maria.recipeslist.recipedatastruct.Recipe;
+import com.itplace.maria.recipeslist.recipedatastruct.RecipeType;
 import com.itplace.maria.recipeslist.repository.RecipesRepository;
 import com.itplace.maria.recipeslist.view.RecipesView;
 
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -31,27 +29,29 @@ public class RecipesPresenter {
         recipesRepository.getRecipes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<Recipe>>() {
-                    @Override
-                    public void accept(List<Recipe> recipes) throws Exception {
-                        //List<Recipe> recipes = recipesRepository.getRecipes();
-                        if (view != null) {
-                            view.onRecipesReceived(recipes);
+                .subscribe(recipes -> {
+                            if (view != null) {
+                                view.onRecipesReceived(recipes);
+                            }
+                        }, throwable -> {
+                            if (view != null) {
+                                view.showError(throwable);
+                            }
                         }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if (view != null) {
-                            view.showError(throwable);
-                        }
-                    }
-                });
+                );
 
-        /*List<Recipe> recipes = recipesRepository.getRecipes();
-        if (view != null) {
-            view.onRecipesReceived(recipes);
-        }*/
+    }
+
+    public void addByListType(RecipesAdapter adapter, List<Recipe> recipes, RecipeType type) {
+        if (type != null) {
+            for (int i = 0; i < recipes.size(); i++) {
+                Recipe recipe = recipes.get(i);
+
+                if (recipe.getType() == type) {
+                    adapter.addItem(recipe);
+                }
+            }
+        }
     }
 
     public void detachView() {

@@ -49,8 +49,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         }
         notifyItemInserted(items.size());
         items.add(entity);
-        //notifyItemInserted(items.indexOf(entity));
     }
+
     public void initList() {
         if (items == null) {
             items = new ArrayList<>();

@@ -81,7 +81,7 @@ public class RecipesListFragment extends Fragment
         if (args != null) {
             RecipeType type = (RecipeType) args.getSerializable(ARG_TYPE_PAGE);
 
-            if (type != null) {
+            /*if (type != null) {
                 for (int i = 0; i < recipes.size(); i++) {
                     Recipe recipe = recipes.get(i);
 
@@ -89,7 +89,8 @@ public class RecipesListFragment extends Fragment
                         adapter.addItem(recipe);
                     }
                 }
-            }
+            }*/
+            presenter.addByListType(adapter, recipes, type);
         }
     }
 
