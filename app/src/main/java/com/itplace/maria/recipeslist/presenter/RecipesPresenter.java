@@ -28,7 +28,7 @@ public class RecipesPresenter {
     }
 
     public void loadRecipes() {
-        /*recipesRepository.getRecipes()
+        recipesRepository.getRecipes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<Recipe>>() {
@@ -46,12 +46,12 @@ public class RecipesPresenter {
                             view.showError(throwable);
                         }
                     }
-                });*/
+                });
 
-        List<Recipe> recipes = recipesRepository.getRecipes();
+        /*List<Recipe> recipes = recipesRepository.getRecipes();
         if (view != null) {
             view.onRecipesReceived(recipes);
-        }
+        }*/
     }
 
     public void detachView() {
