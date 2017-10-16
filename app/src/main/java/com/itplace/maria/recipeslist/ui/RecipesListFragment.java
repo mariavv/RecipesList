@@ -23,7 +23,7 @@ import java.util.List;
  * Здесь отображается список элементов - рецептов
  */
 public class RecipesListFragment extends Fragment
-        implements RecipesAdapter.ViewHolder.OnItemClickListener, RecipesView {
+        implements RecipesAdapter.OnItemClickListener, RecipesView {
 
     private static final String ARG_TYPE_PAGE = "type_page";
 
@@ -48,8 +48,7 @@ public class RecipesListFragment extends Fragment
         recycler = v.findViewById(R.id.recycler);
         configureRecyclerView();
 
-        RecipesAdapter.ViewHolder listener = new RecipesAdapter.ViewHolder(v);
-        listener.setOnItemClickListener(this);
+        adapter.setOnItemClickListener(this);
 
         presenter.attachView(this);
         presenter.loadRecipes();

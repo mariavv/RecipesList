@@ -24,6 +24,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
 
     private List<Recipe> items;
 
+    private OnItemClickListener onItemClickListener;
+
     @Override
     public RecipesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_card, parent, false);
@@ -49,15 +51,21 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         //notifyItemInserted(items.indexOf(entity));
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int RecipeId);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView ingredients;
         ImageView pic;
 
-        private OnItemClickListener onItemClickListener;
-
-        public ViewHolder(final View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
@@ -79,14 +87,6 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             if (position != RecyclerView.NO_POSITION) {
                 onItemClickListener.onItemClick(position);
             }
-        }
-
-        public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
-            this.onItemClickListener = onItemClickListener;
-        }
-
-        public interface OnItemClickListener {
-            void onItemClick(int RecipeId);
         }
     }
 }

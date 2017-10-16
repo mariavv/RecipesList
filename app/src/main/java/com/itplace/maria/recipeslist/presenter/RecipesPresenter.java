@@ -45,6 +45,11 @@ public class RecipesPresenter {
                     }
                 });
         //List<Recipe> recipes = recipesRepository.getRecipes();
+
+        /*List<Recipe> recipes = recipesRepository.getRecipes();
+        if (view != null) {
+            view.onRecipesReceived(recipes);
+        }*/
     }
 
     public void detachView() {
