@@ -16,6 +16,29 @@ import static com.itplace.maria.recipeslist.recipedatastruct.RecipeType.DINNER;
  */
 
 public class RecipesRepository {
+<<<<<<< Updated upstream
+=======
+    /*public Observable<List<Recipe>> getRecipes() {
+        return Observable.defer(new Callable<ObservableSource<? extends List<Recipe>>>() {
+                                    @Override
+                                    public ObservableSource<? extends List<Recipe>> call() throws Exception {
+                                        List<Recipe> recipes = new ArrayList<>();
+
+                                        // TODO Набросать рецептов.
+
+                                        recipes.add(new Recipe("1", BREAKFAST, "Кофе", "кофе, печенька", R.drawable.pic));
+                                        recipes.add(new Recipe("2", BREAKFAST, "Омлет", "яйца, молоко, соль", R.drawable.omlet));
+                                        recipes.add(new Recipe("3", BREAKFAST, "Салат с крабовыми палочками",
+                                                "крабовые палочки, капуста белокочанная, огурцы, кукуруза, сыр, майонез, соль",
+                                                R.drawable.salat_krab));
+                                        recipes.add(new Recipe("4", DINNER, "Вкусный ужин", "продукты", R.drawable.pic));
+
+                                        return Observable.just(recipes);
+                                    }
+    });
+    }*/
+
+>>>>>>> Stashed changes
     public List<Recipe> getRecipes() {
         List<Recipe> recipes = new ArrayList<>();
 

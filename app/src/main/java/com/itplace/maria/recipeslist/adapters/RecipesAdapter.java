@@ -25,6 +25,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
 
     private List<Recipe> items;
 
+    private OnItemClickListener onItemClickListener;
+
     @Override
     public RecipesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_card, parent, false);
@@ -49,23 +51,27 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         notifyItemInserted(items.indexOf(entity));
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int RecipeId);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView ingredients;
         ImageView pic;
-        CardView card;
 
-        private OnItemClickListener onItemClickListener;
-
-        public ViewHolder(final View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
             ingredients = itemView.findViewById(R.id.ingredients);
             pic = itemView.findViewById(R.id.pic);
 
-            // TODO null pointer exception
             itemView.setOnClickListener(this);
         }
 
@@ -79,25 +85,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                //itemClick(position);
                 onItemClickListener.onItemClick(position);
             }
-        }
-
-        private void itemClick(int position) {
-            // TODO нужно через свой интерфейс передавать событие клика по элементу в BreakfastsFragment.
-            // TODO Передавать можно или сам элемент или id в Recipe
-            // TODO CardActivity.createStartIntent должно вызываться в BreakfastsFragment.
-            //Intent intent = CardActivity.createStartIntent(itemView.getContext());
-            //itemView.getContext().startActivity(intent);
-        }
-
-        public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
-            this.onItemClickListener = onItemClickListener;
-        }
-
-        public interface OnItemClickListener {
-            void onItemClick(int RecipeId);
         }
     }
 }

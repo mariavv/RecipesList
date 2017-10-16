@@ -20,6 +20,29 @@ public class RecipesPresenter {
     }
 
     public void loadRecipes() {
+<<<<<<< Updated upstream
+=======
+        /*recipesRepository.getRecipes()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Recipe>>() {
+                    @Override
+                    public void accept(List<Recipe> recipes) throws Exception {
+                        if (view != null) {
+                            view.onRecipesReceived(recipes);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        if (view != null) {
+                            //view.showError();
+                        }
+                    }
+                });*/
+        //List<Recipe> recipes = recipesRepository.getRecipes();
+
+>>>>>>> Stashed changes
         List<Recipe> recipes = recipesRepository.getRecipes();
         if (view != null) {
             view.onRecipesReceived(recipes);
