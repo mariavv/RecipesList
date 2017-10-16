@@ -54,6 +54,7 @@ public class RecipesListFragment extends Fragment
 
         presenter.attachView(this);
         presenter.loadRecipes();
+        adapter.initList();
 
         return v;
     }
