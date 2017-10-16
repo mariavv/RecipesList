@@ -35,7 +35,6 @@ public class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
             case PAGE_BREAKFASTS:
                 type = RecipeType.BREAKFAST;
                 break;
-
             case PAGE_DINNERS:
                 type = RecipeType.DINNER;
                 break;
@@ -55,7 +54,6 @@ public class RecipesFragmentPagerAdapter extends FragmentPagerAdapter {
             case PAGE_BREAKFASTS:
                 pageTitle = context.getString(R.string.Breakfasts);
                 break;
-
             case PAGE_DINNERS:
                 pageTitle = context.getString(R.string.Dinners);
                 break;

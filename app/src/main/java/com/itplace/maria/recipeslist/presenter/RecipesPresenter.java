@@ -1,5 +1,7 @@
 package com.itplace.maria.recipeslist.presenter;
 
+import android.widget.Toast;
+
 import com.itplace.maria.recipeslist.recipedatastruct.Recipe;
 import com.itplace.maria.recipeslist.repository.RecipesRepository;
 import com.itplace.maria.recipeslist.view.RecipesView;
@@ -26,12 +28,13 @@ public class RecipesPresenter {
     }
 
     public void loadRecipes() {
-        recipesRepository.getRecipes()
+        /*recipesRepository.getRecipes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<Recipe>>() {
                     @Override
                     public void accept(List<Recipe> recipes) throws Exception {
+                        //List<Recipe> recipes = recipesRepository.getRecipes();
                         if (view != null) {
                             view.onRecipesReceived(recipes);
                         }
@@ -40,16 +43,15 @@ public class RecipesPresenter {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         if (view != null) {
-                            //view.showError();
+                            view.showError(throwable);
                         }
                     }
-                });
-        //List<Recipe> recipes = recipesRepository.getRecipes();
+                });*/
 
-        /*List<Recipe> recipes = recipesRepository.getRecipes();
+        List<Recipe> recipes = recipesRepository.getRecipes();
         if (view != null) {
             view.onRecipesReceived(recipes);
-        }*/
+        }
     }
 
     public void detachView() {

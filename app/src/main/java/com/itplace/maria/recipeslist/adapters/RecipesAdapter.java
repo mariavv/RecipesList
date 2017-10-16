@@ -39,6 +39,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
 
     @Override
     public int getItemCount() {
+        //items = items == null ? null : items;
         return items.size();
     }
 
@@ -56,7 +57,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int RecipeId);
+        void onItemClick(String RecipeId);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -85,7 +86,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                onItemClickListener.onItemClick(position);
+                onItemClickListener.onItemClick(items.get(position).getId());
             }
         }
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.itplace.maria.recipeslist.R;
 
@@ -19,6 +20,9 @@ public class CardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
+
+        TextView text = findViewById(R.id.text);
+        text.setText(getIntent().getStringExtra("recipe_id"));
     }
 
     public static Intent createStartIntent(Context context) {

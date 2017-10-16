@@ -19,7 +19,7 @@ import static com.itplace.maria.recipeslist.recipedatastruct.RecipeType.*;
  */
 
 public class RecipesRepository {
-    public Observable<List<Recipe>> getRecipes() {
+    /*public Observable<List<Recipe>> getRecipes() {
         return Observable.defer(new Callable<ObservableSource<? extends List<Recipe>>>() {
                                     @Override
                                     public ObservableSource<? extends List<Recipe>> call() throws Exception {
@@ -37,9 +37,9 @@ public class RecipesRepository {
                                         return Observable.just(recipes);
                                     }
     });
-    }
+    }*/
 
-    /*public List<Recipe> getRecipes() {
+    public List<Recipe> getRecipes() {
         List<Recipe> recipes = new ArrayList<>();
 
         // TODO Набросать рецептов.
@@ -52,5 +52,5 @@ public class RecipesRepository {
         recipes.add(new Recipe("4", DINNER, "Вкусный ужин", "продукты", R.drawable.pic));
 
         return recipes;
-    }*/
+    }
 }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.itplace.maria.recipeslist.R;
 import com.itplace.maria.recipeslist.presenter.RecipesPresenter;
@@ -26,12 +27,13 @@ public class RecipesListFragment extends Fragment
         implements RecipesAdapter.OnItemClickListener, RecipesView {
 
     private static final String ARG_TYPE_PAGE = "type_page";
+    private static final String ARG_RECIPE_ID = "recipe_id";
 
     private RecyclerView recycler;
-
     RecipesAdapter adapter;
-
     private final RecipesPresenter presenter = new RecipesPresenter();
+
+    Bundle arguments;
 
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
@@ -63,8 +65,11 @@ public class RecipesListFragment extends Fragment
     }
 
     @Override
-    public void onItemClick(int RecipeId) {
+    public void onItemClick(String RecipeId) {
+        arguments = new Bundle();
+        arguments.putString(ARG_RECIPE_ID, RecipeId);
         Intent intent = CardActivity.createStartIntent(getContext());
+        intent.putExtras(arguments);
         startActivity(intent);
     }
 
@@ -85,6 +90,12 @@ public class RecipesListFragment extends Fragment
                 }
             }
         }
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        Toast toast = Toast.makeText(this.getContext(), throwable.getMessage(), Toast.LENGTH_LONG);
+        toast.show();
     }
 
     @Override

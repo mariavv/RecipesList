@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface RecipesView {
     void onRecipesReceived(List<Recipe> recipes);
+    void showError(Throwable throwable);
 }
