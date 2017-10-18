@@ -27,13 +27,10 @@ public class RecipesListFragment extends Fragment
         implements RecipesAdapter.OnItemClickListener, RecipesView {
 
     private static final String ARG_TYPE_PAGE = "type_page";
-    private static final String ARG_RECIPE_ID = "recipe_id";
 
     private RecyclerView recycler;
-    RecipesAdapter adapter;
+    private RecipesAdapter adapter;
     private final RecipesPresenter presenter = new RecipesPresenter();
-
-    Bundle arguments;
 
     public static RecipesListFragment newInstance(RecipeType type) {
         RecipesListFragment fragment = new RecipesListFragment();
@@ -54,7 +51,6 @@ public class RecipesListFragment extends Fragment
 
         presenter.attachView(this);
         presenter.loadRecipes();
-        adapter.initList();
 
         return v;
     }
@@ -66,22 +62,20 @@ public class RecipesListFragment extends Fragment
     }
 
     @Override
-    public void onItemClick(String RecipeId) {
-        arguments = new Bundle();
-        arguments.putString(ARG_RECIPE_ID, RecipeId);
-        Intent intent = CardActivity.createStartIntent(getContext());
-        intent.putExtras(arguments);
+    public void onItemClick(String recipeId) {
+        Intent intent = CardActivity.createStartIntent(getContext(), recipeId);
         startActivity(intent);
     }
 
     @Override
     public void onRecipesReceived(List<Recipe> recipes) {
+        // TODO фильтрация должна происходить в рамках получения данныъ loadRecipes. В rx есть метод map.
         Bundle args = getArguments();
 
         if (args != null) {
             RecipeType type = (RecipeType) args.getSerializable(ARG_TYPE_PAGE);
 
-            /*if (type != null) {
+            if (type != null) {
                 for (int i = 0; i < recipes.size(); i++) {
                     Recipe recipe = recipes.get(i);
 
@@ -89,8 +83,7 @@ public class RecipesListFragment extends Fragment
                         adapter.addItem(recipe);
                     }
                 }
-            }*/
-            presenter.addByListType(adapter, recipes, type);
+            }
         }
     }
 

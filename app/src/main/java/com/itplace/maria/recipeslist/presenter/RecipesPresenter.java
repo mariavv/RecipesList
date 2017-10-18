@@ -42,19 +42,10 @@ public class RecipesPresenter {
 
     }
 
-    public void addByListType(RecipesAdapter adapter, List<Recipe> recipes, RecipeType type) {
-        if (type != null) {
-            for (int i = 0; i < recipes.size(); i++) {
-                Recipe recipe = recipes.get(i);
-
-                if (recipe.getType() == type) {
-                    adapter.addItem(recipe);
-                }
-            }
-        }
-    }
-
     public void detachView() {
         view = null;
+    }
+
+    public void loadCard(String recipe_id) {
     }
 }

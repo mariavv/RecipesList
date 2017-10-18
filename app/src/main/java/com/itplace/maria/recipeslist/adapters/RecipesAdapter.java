@@ -22,7 +22,7 @@ import java.util.List;
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 
-    private List<Recipe> items;
+    private List<Recipe> items = new ArrayList<>();
 
     private OnItemClickListener onItemClickListener;
 
@@ -47,14 +47,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         if (items == null) {
             items = new ArrayList<>();
         }
-        notifyItemInserted(items.size());
         items.add(entity);
-    }
-
-    public void initList() {
-        if (items == null) {
-            items = new ArrayList<>();
-        }
+        notifyItemInserted(items.size() - 1);
     }
 
     public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
